@@ -1,3 +1,5 @@
 <p>foo works!</p>
 <button (click)="getUser()">get user</button>
+<button (click)="getShibes()">get shibes</button>
 <pre>{{ user() | json }}</pre>
+<img *ngFor="let shibe of shibes()" [src]="shibe" style="width: 300px" />
