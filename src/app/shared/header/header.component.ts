@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +18,10 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 export class HeaderComponent implements OnInit {
   private readonly http = inject(HttpClient);
 
-  @Input() title = 'Non title';
-  buildTime = '';
+  @Input({ required: true }) title = 'Non title';
+  @Input({ transform: booleanAttribute }) prerenderEnabled = false;
+
+  now = '';
 
   ngOnInit(): void {
     this.fetchNow();
@@ -23,7 +31,7 @@ export class HeaderComponent implements OnInit {
     this.http
       .get('https://worldtimeapi.org/api/timezone/Asia/Tokyo')
       .subscribe((now: any) => {
-        this.buildTime = now['datetime'];
+        this.now = now['datetime'];
       });
   }
 }
