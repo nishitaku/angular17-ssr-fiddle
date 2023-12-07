@@ -22,9 +22,11 @@ export class HeaderComponent implements OnInit {
   @Input({ transform: booleanAttribute }) prerenderEnabled = false;
 
   now = '';
+  uuid = '';
 
   ngOnInit(): void {
     this.fetchNow();
+    this.fetchUuid();
   }
 
   private fetchNow() {
@@ -32,6 +34,14 @@ export class HeaderComponent implements OnInit {
       .get('https://worldtimeapi.org/api/timezone/Asia/Tokyo')
       .subscribe((now: any) => {
         this.now = now['datetime'];
+      });
+  }
+
+  private fetchUuid() {
+    this.http
+      .get('https://www.uuidtools.com/api/generate/v4/count/1')
+      .subscribe((uuid: any) => {
+        this.uuid = uuid;
       });
   }
 }
