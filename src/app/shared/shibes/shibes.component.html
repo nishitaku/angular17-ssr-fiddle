@@ -1,2 +1,5 @@
 <button (click)="getShibes()" style="display: block">get shibes</button>
+
+@defer {
 <img *ngFor="let shibe of shibes()" [src]="shibe" style="width: 300px" />
+} @placeholder { 取得中・・ } @error { 取得失敗 }
