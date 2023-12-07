@@ -11,30 +11,16 @@ import { HeaderComponent } from '../../shared/header/header.component';
   styleUrl: './foo.component.css',
 })
 export class FooComponent implements OnInit {
-  user = signal<any>(null);
   shibes = signal<any>(null);
 
   private readonly http = inject(HttpClient);
 
   ngOnInit() {
-    this.fetchUser();
     this.fetchShibes();
-  }
-
-  getUser() {
-    this.fetchUser();
   }
 
   getShibes() {
     this.fetchShibes();
-  }
-
-  private fetchUser() {
-    this.http
-      .get('https://jsonplaceholder.typicode.com/users/1')
-      .subscribe((user) => {
-        this.user.set(user);
-      });
   }
 
   private fetchShibes() {
