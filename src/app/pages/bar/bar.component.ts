@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
+import { ShibesComponent } from '../../shared/shibes/shibes.component';
 
 @Component({
   selector: 'app-bar',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [HeaderComponent, ShibesComponent],
   templateUrl: './bar.component.html',
   styleUrl: './bar.component.css',
 })
